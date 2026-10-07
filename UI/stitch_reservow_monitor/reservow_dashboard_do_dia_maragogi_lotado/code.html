@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RESERVOW - Dashboard do dia</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "surface": "#f8f9ff",
+            "on-primary-container": "#bcceff",
+            "primary-container": "#0f52ba",
+            "on-surface": "#0b1c30",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary-fixed": "#00201d",
+            "outline-variant": "#c3c6d5",
+            "background": "#f8f9ff",
+            "tertiary-fixed": "#ffdcc3",
+            "on-secondary-container": "#006f66",
+            "tertiary": "#653400",
+            "on-surface-variant": "#434653",
+            "surface-container-highest": "#d3e4fe",
+            "surface-container": "#e5eeff",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-container": "#ffc292",
+            "tertiary-fixed-dim": "#ffb77d",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#00419c",
+            "on-background": "#0b1c30",
+            "inverse-surface": "#213145",
+            "surface-dim": "#cbdbf5",
+            "secondary-fixed": "#89f5e7",
+            "surface-container-low": "#eff4ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#86f2e4",
+            "outline": "#737784",
+            "secondary": "#006a61",
+            "primary-fixed-dim": "#b0c6ff",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#d9e2ff",
+            "tertiary-container": "#874700",
+            "primary": "#003c90",
+            "on-secondary-fixed-variant": "#005049",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#001945",
+            "surface-bright": "#f8f9ff",
+            "on-tertiary-fixed": "#2f1500",
+            "surface-tint": "#1d59c1",
+            "inverse-primary": "#b0c6ff",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#6bd8cb",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter-desktop": "1.25rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "margin-desktop": "1.5rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "numeric-data": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-xl": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "numeric-data": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-xl": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-14 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm sticky top-0 z-50">
+<!-- Brand & Navigation Cluster -->
+<div class="flex items-center space-x-8">
+<span class="text-headline-lg font-headline-xl font-bold tracking-tight text-primary dark:text-inverse-primary select-none">RESERVOW</span>
+<nav class="flex items-center space-x-6 h-14">
+<!-- Active link: Dashboard -->
+<a class="text-primary dark:text-inverse-primary font-headline-md border-b-2 border-primary dark:border-inverse-primary pb-1 flex items-center h-full pt-1" href="#">
+          Dashboard
+        </a>
+<!-- Inactive link: Reservas -->
+<a class="text-on-surface-variant dark:text-inverse-on-surface font-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors flex items-center h-full" href="#">
+          Reservas
+        </a>
+</nav>
+</div>
+<!-- Trailing Actions Cluster -->
+<div class="flex items-center space-x-4">
+<button class="inline-flex items-center justify-center bg-primary-container text-surface-container-lowest font-headline-md text-body-md px-3.5 py-1.5 rounded-xl hover:bg-primary transition-colors shadow-sm active:scale-[0.98]" type="button">
+        + Nova reserva
+      </button>
+<div class="flex items-center space-x-1 border-l border-outline-variant pl-3">
+<button aria-label="Notificações" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-xl transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] leading-none" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Conta" class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-xl transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px] leading-none" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Administrative Content Canvas (Desktop Baseline 1440px) -->
+<main class="flex-1 w-full max-w-[1440px] mx-auto px-margin-desktop py-space-xl">
+<!-- Section Header: Clean title + Elegant Single Date Selector -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-space-lg mb-space-lg border-b border-outline-variant/60 gap-4">
+<div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface tracking-tight">Dashboard do dia</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Visão operacional de saídas, ocupação e vagas em tempo real</p>
+</div>
+<!-- Single Date Input (Clean, Elegant 'Hoje') -->
+<div class="flex items-center">
+<div class="relative inline-flex items-center bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm px-3 py-1.5 hover:border-outline focus-within:border-primary-container focus-within:ring-2 focus-within:ring-primary-container/20 transition-all">
+<span class="material-symbols-outlined text-outline text-[18px] mr-2 select-none" data-icon="calendar_today">calendar_today</span>
+<span class="text-body-md font-numeric-data text-on-surface font-medium select-none pr-2">Hoje</span>
+<span class="material-symbols-outlined text-outline text-[18px] select-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Consistent Departures Grid (12-column Grid, Strict Unified Card Structure) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop">
+<!-- CARD 1: Maragogi -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow transition-shadow">
+<div>
+<!-- Header: Title & Time Pill -->
+<div class="flex items-start justify-between mb-3">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface leading-tight">Maragogi</h2>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Capacidade total: 20 pessoas</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-primary px-2.5 py-1 rounded-xl font-numeric-data text-label-md border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+              08:00
+            </span>
+</div>
+<!-- Capacity Bar Section -->
+<div class="my-3"><div class="flex justify-between items-center mb-1.5"><span class="text-body-sm font-numeric-data text-on-surface">20/20 vagas ocupadas</span><span class="text-label-sm font-label-sm text-error font-bold">100%</span></div><div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden"><div class="bg-error h-2 rounded-full" style="width: 100%;"></div></div></div>
+<!-- Highlight: Vagas Restantes -->
+<div class="mt-2.5 mb-3 bg-error-container/40 border border-error/20 rounded-xl px-3 py-2 flex items-center justify-between"><span class="text-body-sm font-body-sm text-error flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-[16px]" data-icon="block">block</span>Vagas restantes</span><span class="text-numeric-data font-numeric-data text-error font-bold">0 vagas restantes (LOTADO)</span></div>
+</div>
+<!-- Footnote / Status Badges: Confirmadas & Pendentes -->
+<div class="pt-3 border-t border-outline-variant/40 flex items-center justify-between"><div class="flex items-center gap-2"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-numeric-data text-label-md"><span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>Confirmadas: 20</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-low text-outline font-numeric-data text-label-md"><span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>Pendentes: 0</span></div></div>
+</div>
+<!-- CARD 2: Praia dos Carneiros -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow transition-shadow">
+<div>
+<!-- Header: Title & Time Pill -->
+<div class="flex items-start justify-between mb-3">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface leading-tight">Praia dos Carneiros</h2>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Capacidade total: 16 vagas</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-primary px-2.5 py-1 rounded-xl font-numeric-data text-label-md border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+              09:00
+            </span>
+</div>
+<!-- Capacity Bar Section -->
+<div class="my-3">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-body-sm font-numeric-data text-on-surface">12/16 vagas ocupadas</span>
+<span class="text-label-sm font-label-sm text-tertiary">75%</span>
+</div>
+<!-- Progress Bar (Bootstrap bg-warning equivalent) -->
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-2 rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Highlight: Vagas Restantes -->
+<div class="mt-2.5 mb-3 bg-tertiary-fixed/30 border border-tertiary-fixed-dim/40 rounded-xl px-3 py-2 flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-tertiary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="info">info</span>
+              Vagas restantes
+            </span>
+<span class="text-numeric-data font-numeric-data text-tertiary font-bold">4 vagas restantes</span>
+</div>
+</div>
+<!-- Footnote / Status Badges: Confirmadas & Pendentes -->
+<div class="pt-3 border-t border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+              Confirmadas: 12
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-low text-outline font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+              Pendentes: 0
+            </span>
+</div>
+</div>
+</div>
+<!-- CARD 3: Buggy pelas praias -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow transition-shadow">
+<div>
+<!-- Header: Title & Time Pill -->
+<div class="flex items-start justify-between mb-3">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface leading-tight">Buggy pelas praias</h2>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Capacidade total: 8 vagas</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-primary px-2.5 py-1 rounded-xl font-numeric-data text-label-md border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+              08:30
+            </span>
+</div>
+<!-- Capacity Bar Section -->
+<div class="my-3">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-body-sm font-numeric-data text-on-surface">8/8 vagas ocupadas</span>
+<span class="text-label-sm font-label-sm text-error font-bold">100%</span>
+</div>
+<!-- Progress Bar (Bootstrap bg-danger equivalent) -->
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+<div class="bg-error h-2 rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Highlight: Vagas Restantes (LOTADO) -->
+<div class="mt-2.5 mb-3 bg-error-container/40 border border-error/20 rounded-xl px-3 py-2 flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-error flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-[16px]" data-icon="block">block</span>
+              Vagas restantes
+            </span>
+<span class="text-numeric-data font-numeric-data text-error font-bold">0 vagas restantes (LOTADO)</span>
+</div>
+</div>
+<!-- Footnote / Status Badges: Confirmadas & Pendentes -->
+<div class="pt-3 border-t border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+              Confirmadas: 8
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-low text-outline font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+              Pendentes: 0
+            </span>
+</div>
+</div>
+</div>
+<!-- CARD 4: Piscinas naturais -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow transition-shadow">
+<div>
+<!-- Header: Title & Time Pill -->
+<div class="flex items-start justify-between mb-3">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface leading-tight">Piscinas naturais</h2>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Capacidade total: 30 vagas</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-primary px-2.5 py-1 rounded-xl font-numeric-data text-label-md border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+              10:00
+            </span>
+</div>
+<!-- Capacity Bar Section -->
+<div class="my-3">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-body-sm font-numeric-data text-on-surface">15/30 vagas ocupadas</span>
+<span class="text-label-sm font-label-sm text-secondary">50%</span>
+</div>
+<!-- Progress Bar (Bootstrap bg-success equivalent) -->
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-2 rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+<!-- Highlight: Vagas Restantes -->
+<div class="mt-2.5 mb-3 bg-secondary-container/30 border border-secondary/20 rounded-xl px-3 py-2 flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+              Vagas restantes
+            </span>
+<span class="text-numeric-data font-numeric-data text-secondary font-bold">15 vagas restantes</span>
+</div>
+</div>
+<!-- Footnote / Status Badges: Confirmadas & Pendentes -->
+<div class="pt-3 border-t border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+              Confirmadas: 15
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-high text-on-surface-variant font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+              Pendentes: 2
+            </span>
+</div>
+</div>
+</div>
+<!-- CARD 5: Maracaípe ao pôr do sol -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow transition-shadow">
+<div>
+<!-- Header: Title & Time Pill -->
+<div class="flex items-start justify-between mb-3">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface leading-tight">Maracaípe ao pôr do sol</h2>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Capacidade total: 14 vagas</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-primary px-2.5 py-1 rounded-xl font-numeric-data text-label-md border border-outline-variant/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+              16:00
+            </span>
+</div>
+<!-- Capacity Bar Section -->
+<div class="my-3">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-body-sm font-numeric-data text-on-surface">6/14 vagas ocupadas</span>
+<span class="text-label-sm font-label-sm text-secondary">43%</span>
+</div>
+<!-- Progress Bar (Bootstrap bg-success equivalent) -->
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-2 rounded-full" style="width: 43%;"></div>
+</div>
+</div>
+<!-- Highlight: Vagas Restantes -->
+<div class="mt-2.5 mb-3 bg-secondary-container/30 border border-secondary/20 rounded-xl px-3 py-2 flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+              Vagas restantes
+            </span>
+<span class="text-numeric-data font-numeric-data text-secondary font-bold">8 vagas restantes</span>
+</div>
+</div>
+<!-- Footnote / Status Badges: Confirmadas & Pendentes -->
+<div class="pt-3 border-t border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container text-primary font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+              Confirmadas: 6
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-low text-outline font-numeric-data text-label-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+              Pendentes: 0
+            </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

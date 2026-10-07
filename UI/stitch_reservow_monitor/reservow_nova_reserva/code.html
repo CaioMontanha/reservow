@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RESERVOW - Nova Reserva</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "inverse-primary": "#b0c6ff",
+            "on-secondary-fixed-variant": "#005049",
+            "on-primary-fixed-variant": "#00419c",
+            "surface-container-high": "#dce9ff",
+            "secondary-fixed-dim": "#6bd8cb",
+            "on-tertiary-container": "#ffc292",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "outline-variant": "#c3c6d5",
+            "secondary": "#006a61",
+            "primary-container": "#0f52ba",
+            "on-primary-fixed": "#001945",
+            "surface-container-low": "#eff4ff",
+            "tertiary": "#653400",
+            "on-surface": "#0b1c30",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb77d",
+            "primary": "#003c90",
+            "inverse-surface": "#213145",
+            "outline": "#737784",
+            "on-secondary-container": "#006f66",
+            "primary-fixed-dim": "#b0c6ff",
+            "on-tertiary-fixed": "#2f1500",
+            "tertiary-container": "#874700",
+            "surface-tint": "#1d59c1",
+            "inverse-on-surface": "#eaf1ff",
+            "on-surface-variant": "#434653",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#bcceff",
+            "background": "#f8f9ff",
+            "error": "#ba1a1a",
+            "secondary-container": "#86f2e4",
+            "primary-fixed": "#d9e2ff",
+            "surface": "#f8f9ff",
+            "surface-container-highest": "#d3e4fe",
+            "surface-variant": "#d3e4fe",
+            "secondary-fixed": "#89f5e7",
+            "on-background": "#0b1c30",
+            "surface-container": "#e5eeff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "tertiary-fixed": "#ffdcc3",
+            "on-secondary-fixed": "#00201d",
+            "surface-bright": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-desktop": "1.5rem",
+            "space-md": "0.75rem",
+            "gutter-desktop": "1.25rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "numeric-data": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-xl": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "numeric-data": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-xl": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component JSON Blueprint) -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-14 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm sticky top-0 z-40">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[26px]">water</span>
+<div class="flex flex-col">
+<span class="text-headline-lg font-headline-xl font-bold tracking-tight text-primary dark:text-inverse-primary leading-none">RESERVOW</span>
+<span class="text-[10px] uppercase font-label-sm tracking-wider text-outline font-semibold">Operações Marítimas Porto de Galinhas</span>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-6 ml-6 h-14">
+<a class="text-on-surface-variant dark:text-inverse-on-surface font-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors flex items-center h-full pt-1" href="/dashboard">
+          Dashboard
+        </a>
+<a class="text-primary dark:text-inverse-primary font-headline-md border-b-2 border-primary dark:border-inverse-primary pb-1 flex items-center h-full" href="/reservas">
+          Reservas
+        </a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary-container/80 text-on-primary font-label-md text-label-md px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-sm opacity-90 cursor-default" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+        + Nova reserva
+      </button>
+<div class="h-5 w-[1px] bg-outline-variant mx-1"></div>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-150 rounded-xl relative" title="Notificações" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-150 rounded-xl" title="Conta do Operador" type="button">
+<span class="material-symbols-outlined text-[22px]">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Operational Canvas -->
+<main class="flex-1 max-w-[1200px] w-full mx-auto px-margin-desktop py-space-xl">
+<!-- Breadcrumb & Header Section -->
+<div class="mb-space-xl">
+<nav class="flex items-center gap-2 font-label-md text-label-md text-outline mb-1">
+<a class="hover:text-primary transition-colors" href="/reservas">Reservas</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Nova reserva</span>
+</nav>
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+<div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface">Nova reserva</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-0.5">Cadastro de nova reserva e alocação imediata de vagas</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-xl border border-outline-variant text-on-surface-variant text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-primary text-[16px]">schedule</span>
+<span>Tábua de Marés Hoje: <strong class="text-on-surface">0.2m às 10:45</strong></span>
+</div>
+</div>
+</div>
+<!-- Main Operational Form Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-6 sm:p-8">
+<form action="/reservas" class="space-y-6" id="reservationForm" method="POST">
+<!-- 1. Campo de Data do Passeio -->
+<div class="space-y-1.5 max-w-sm">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="tour_date">
+            Data do passeio <span class="text-error">*</span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">
+              calendar_today
+            </span>
+<input class="w-full h-9 pl-9 pr-3 text-body-md font-body-md text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" id="tour_date" name="tour_date" required="" type="date" value="2023-10-24"/>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Selecione o dia do embarque para consultar o quadro de vagas</span>
+</div>
+<hr class="border-outline-variant my-2"/>
+<!-- 2. Seleção de Saída Disponível -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface font-semibold">
+              Saída disponível <span class="text-error">*</span>
+</label>
+<span class="text-label-sm font-label-sm text-on-surface-variant">5 saídas programadas para 24/10/2023</span>
+</div>
+<!-- Grade de Opções Interativas de Saídas -->
+<div aria-label="Saídas disponíveis" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" role="radiogroup">
+<!-- Opção 1: Maragogi - 08:00 (Selecionada) -->
+<label class="relative flex flex-col p-3.5 bg-surface-container-low border-2 border-primary-container rounded-xl cursor-pointer hover:bg-surface-container transition-colors shadow-sm">
+<input checked="" class="sr-only" name="departure_id" onchange="updateSelectedDeparture('Maragogi', '08:00', 2)" type="radio" value="1"/>
+<div class="flex items-start justify-between mb-1.5">
+<div class="flex items-center gap-1.5 font-headline-md text-headline-md text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[18px]">directions_boat</span>
+<span>Maragogi</span>
+</div>
+<span class="bg-amber-100 border border-amber-300 text-amber-800 text-label-sm font-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  2 vagas restantes
+                </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-auto">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span> 08:00 (Manhã)
+                </span>
+<span class="font-numeric-data text-label-sm text-primary-container font-semibold">Selecionado</span>
+</div>
+</label>
+<!-- Opção 2: Praia dos Carneiros - 09:00 -->
+<label class="relative flex flex-col p-3.5 bg-surface-container-lowest border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="sr-only" name="departure_id" onchange="updateSelectedDeparture('Praia dos Carneiros', '09:00', 4)" type="radio" value="2"/>
+<div class="flex items-start justify-between mb-1.5">
+<div class="flex items-center gap-1.5 font-headline-md text-headline-md text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">sailing</span>
+<span>Praia dos Carneiros</span>
+</div>
+<span class="bg-emerald-100 border border-emerald-300 text-emerald-800 text-label-sm font-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  4 vagas restantes
+                </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-auto">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span> 09:00 (Manhã)
+                </span>
+<span class="text-label-sm text-outline">Disponível</span>
+</div>
+</label>
+<!-- Opção 3: Maracaípe ao pôr do sol - 16:00 -->
+<label class="relative flex flex-col p-3.5 bg-surface-container-lowest border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="sr-only" name="departure_id" onchange="updateSelectedDeparture('Maracaípe ao pôr do sol', '16:00', 8)" type="radio" value="3"/>
+<div class="flex items-start justify-between mb-1.5">
+<div class="flex items-center gap-1.5 font-headline-md text-headline-md text-on-surface">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">wb_twilight</span>
+<span>Maracaípe ao pôr do sol</span>
+</div>
+<span class="bg-emerald-100 border border-emerald-300 text-emerald-800 text-label-sm font-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  8 vagas restantes
+                </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-auto">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span> 16:00 (Tarde)
+                </span>
+<span class="text-label-sm text-outline">Disponível</span>
+</div>
+</label>
+<!-- Opção 4: Piscinas naturais - 10:00 -->
+<label class="relative flex flex-col p-3.5 bg-surface-container-lowest border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="sr-only" name="departure_id" onchange="updateSelectedDeparture('Piscinas naturais', '10:00', 15)" type="radio" value="4"/>
+<div class="flex items-start justify-between mb-1.5">
+<div class="flex items-center gap-1.5 font-headline-md text-headline-md text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[18px]">scuba_diving</span>
+<span>Piscinas naturais</span>
+</div>
+<span class="bg-emerald-100 border border-emerald-300 text-emerald-800 text-label-sm font-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  15 vagas restantes
+                </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mt-auto">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span> 10:00 (Manhã)
+                </span>
+<span class="text-label-sm text-outline">Disponível</span>
+</div>
+</label>
+<!-- Opção 5: Buggy pelas praias - 08:30 (Esgotado / Desabilitado) -->
+<div class="relative flex flex-col p-3.5 bg-surface-container-low border border-outline-variant/60 rounded-xl opacity-60 cursor-not-allowed">
+<input class="sr-only" disabled="" name="departure_id" type="radio" value="5"/>
+<div class="flex items-start justify-between mb-1.5">
+<div class="flex items-center gap-1.5 font-headline-md text-headline-md text-outline">
+<span class="material-symbols-outlined text-outline text-[18px]">directions_car</span>
+<span class="line-through">Buggy pelas praias</span>
+</div>
+<span class="bg-red-100 border border-red-300 text-red-800 text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold">
+                  0 vagas • ESGOTADO
+                </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline mt-auto">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span> 08:30 (Manhã)
+                </span>
+<span class="text-label-sm font-semibold uppercase">Sem vagas</span>
+</div>
+</div>
+</div>
+<!-- Banner Informativo da Saída Selecionada -->
+<div class="flex items-center gap-2 p-3 bg-blue-50 border border-blue-200 rounded-xl text-primary font-body-md text-body-md" id="selectionBanner">
+<span class="material-symbols-outlined text-primary-container text-[20px]">info</span>
+<div>
+<span>Saída selecionada: <strong class="font-semibold" id="bannerTourName">Maragogi às 08:00</strong></span>
+<span class="mx-1.5 text-outline">•</span>
+<span>Capacidade restante: <strong class="text-amber-800 font-semibold" id="bannerRemainingSeats">2 vagas disponíveis</strong></span>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant my-2"/>
+<!-- 3. Dados do Passageiro / Cliente -->
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-3">Dados do Passageiro Principal</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<!-- Nome do Cliente -->
+<div class="md:col-span-5 space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="customer_name">
+                Nome do cliente <span class="text-error">*</span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">
+                  person
+                </span>
+<input class="w-full h-9 pl-9 pr-3 text-body-md font-body-md text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all placeholder:text-outline" id="customer_name" name="customer_name" placeholder="Ex: Maria Fernanda Souza" required="" type="text"/>
+</div>
+</div>
+<!-- Telefone (WhatsApp) -->
+<div class="md:col-span-4 space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="customer_phone">
+                Telefone (WhatsApp) <span class="text-error">*</span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">
+                  phone
+                </span>
+<input class="w-full h-9 pl-9 pr-3 text-body-md font-body-md text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all font-numeric-data" id="customer_phone" name="customer_phone" placeholder="(81) 98765-4321" required="" type="text" value="(81) 98765-4321"/>
+</div>
+</div>
+<!-- Número de Pessoas -->
+<div class="md:col-span-3 space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="seats_count">
+                Número de pessoas <span class="text-error">*</span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">
+                  group
+                </span>
+<input class="w-full h-9 pl-9 pr-3 text-body-md font-body-md text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all font-numeric-data" id="seats_count" max="2" min="1" name="seats_count" required="" type="number" value="2"/>
+</div>
+<p class="text-label-sm font-label-sm text-outline" id="seatsHelpText">
+                Máximo permitido para esta saída: <strong class="text-on-surface font-semibold">2 pessoas</strong>
+</p>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant my-4"/>
+<!-- 4. Ações do Formulário & Mensagem de Apoio -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
+<div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-outline text-[18px]">lock_clock</span>
+<span>A reserva será criada com status <strong class="text-on-surface font-semibold">Pendente</strong> e deduzirá <span class="font-semibold text-primary" id="summaryDeductCount">2 vagas</span> da saída selecionada.</span>
+</div>
+<div class="flex items-center gap-3">
+<a class="h-9 px-4 rounded-xl border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors duration-150 inline-flex items-center justify-center active:scale-[0.98]" href="/reservas">
+              Cancelar
+            </a>
+<button class="h-9 px-5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:bg-[#0D47A1] active:bg-[#0A387E] transition-all duration-150 inline-flex items-center justify-center gap-1.5 active:scale-[0.98]" id="submitBtn" type="submit">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+              Salvar reserva
+            </button>
+</div>
+</div>
+</form>
+</div>
+</main>
+<!-- Interactive script for pure visual feedback matching specs -->
+<script>
+    function updateSelectedDeparture(tourName, time, remainingSeats) {
+      // Update info banner
+      document.getElementById('bannerTourName').innerText = `${tourName} às ${time}`;
+      document.getElementById('bannerRemainingSeats').innerText = `${remainingSeats} vagas disponíveis`;
+      
+      // Update max input constraint & helper text
+      const seatsInput = document.getElementById('seats_count');
+      seatsInput.max = remainingSeats;
+      if (parseInt(seatsInput.value) > remainingSeats) {
+        seatsInput.value = remainingSeats;
+      }
+      
+      document.getElementById('seatsHelpText').innerHTML = `Máximo permitido para esta saída: <strong class="text-on-surface font-semibold">${remainingSeats} pessoas</strong>`;
+      document.getElementById('summaryDeductCount').innerText = `${seatsInput.value} vagas`;
+
+      // Update card visual styles
+      const labels = document.querySelectorAll('label[role="radiogroup"] > label, [role="radiogroup"] > label');
+      labels.forEach(lbl => {
+        const radio = lbl.querySelector('input[type="radio"]');
+        if (radio && radio.checked) {
+          lbl.classList.remove('bg-surface-container-lowest', 'border-outline-variant');
+          lbl.classList.add('bg-surface-container-low', 'border-2', 'border-primary-container', 'shadow-sm');
+          const statusText = lbl.querySelector('.text-primary-container');
+          if (statusText) statusText.innerText = 'Selecionado';
+        } else if (radio) {
+          lbl.classList.add('bg-surface-container-lowest', 'border', 'border-outline-variant');
+          lbl.classList.remove('bg-surface-container-low', 'border-2', 'border-primary-container', 'shadow-sm');
+          const statusText = lbl.querySelector('.text-outline');
+          if (statusText) statusText.innerText = 'Disponível';
+        }
+      });
+    }
+
+    // Sync seats count text dynamically
+    document.getElementById('seats_count').addEventListener('input', function(e) {
+      const val = e.target.value || 0;
+      document.getElementById('summaryDeductCount').innerText = `${val} vagas`;
+    });
+
+    // Form submission feedback simulation
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> Gravando reserva...`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        alert('Reserva cadastrada com sucesso! 2 vagas alocadas com status Pendente.');
+        window.location.href = '/reservas';
+      }, 700);
+    });
+  </script>
+</body></html>

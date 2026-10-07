@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RESERVOW — Gestão de Reservas | Porto de Galinhas</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#0b1c30",
+            "secondary-fixed": "#89f5e7",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#003c90",
+            "tertiary": "#653400",
+            "on-secondary-container": "#006f66",
+            "secondary": "#006a61",
+            "background": "#f8f9ff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-variant": "#d3e4fe",
+            "on-secondary-fixed-variant": "#005049",
+            "inverse-primary": "#b0c6ff",
+            "on-secondary-fixed": "#00201d",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "outline-variant": "#c3c6d5",
+            "on-tertiary-fixed": "#2f1500",
+            "surface-bright": "#f8f9ff",
+            "error": "#ba1a1a",
+            "surface": "#f8f9ff",
+            "tertiary-container": "#874700",
+            "primary-container": "#0f52ba",
+            "surface-tint": "#1d59c1",
+            "secondary-container": "#86f2e4",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#213145",
+            "outline": "#737784",
+            "tertiary-fixed": "#ffdcc3",
+            "primary-fixed": "#d9e2ff",
+            "on-background": "#0b1c30",
+            "tertiary-fixed-dim": "#ffb77d",
+            "secondary-fixed-dim": "#6bd8cb",
+            "surface-dim": "#cbdbf5",
+            "on-error": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "on-surface-variant": "#434653",
+            "on-primary-fixed": "#001945",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "primary-fixed-dim": "#b0c6ff",
+            "on-tertiary-container": "#ffc292",
+            "on-primary-fixed-variant": "#00419c",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#dce9ff",
+            "surface-container": "#e5eeff",
+            "on-primary-container": "#bcceff",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "margin-desktop": "1.5rem",
+            "gutter-desktop": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "numeric-data": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "numeric-data": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F8F9FA] text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-surface-variant">
+<!-- TopNavBar (Shared Component Execution) -->
+<header class="bg-surface-container-lowest border-b border-[#DEE2E6] shadow-sm sticky top-0 z-40 w-full">
+<div class="max-w-[1440px] mx-auto px-space-xl py-space-sm flex justify-between items-center">
+<!-- Brand & Section Label -->
+<div class="flex items-center gap-3">
+<a class="text-headline-lg font-headline-lg font-bold tracking-tight text-primary flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-primary text-[26px]">sailing</span>
+          RESERVOW
+        </a>
+<div class="h-4 w-px bg-outline-variant"></div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant border border-outline-variant">
+          Operação Porto de Galinhas
+        </span>
+</div>
+<!-- Navigation Links (Anchored JSON Content) -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-body-md font-body-md flex items-center gap-1" href="#">
+          Dashboard
+        </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 font-medium pb-1 text-body-md font-body-md" href="#">
+          Reservas
+        </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 font-medium pb-1 text-body-md font-body-md" href="#">
+          Passageiros
+        </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 font-medium pb-1 text-body-md font-body-md" href="#">
+          Embarques
+        </a>
+</nav>
+<!-- Trailing Context & Primary Action -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded bg-[#F8F9FA] border border-[#DEE2E6] text-label-md font-label-md text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Plantão: <strong>Mesa Central (Dockside)</strong></span>
+</div>
+<button class="bg-[#0F52BA] hover:bg-[#0D47A1] active:bg-[#0A387E] text-white px-3.5 py-1.5 rounded-lg text-body-sm font-semibold transition-all duration-150 flex items-center gap-1.5 shadow-sm active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+          + Nova reserva
+        </button>
+</div>
+</div>
+</header>
+<!-- Main Operational Workspace -->
+<main class="flex-1 max-w-[1440px] w-full mx-auto px-space-xl py-space-xl flex flex-col gap-5">
+<!-- Control Bar & Daily Metrics Overview -->
+<section class="bg-surface-container-lowest border border-[#DEE2E6] rounded-xl p-space-lg shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Date Selector Cluster -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="inline-flex rounded-lg border border-[#DEE2E6] p-0.5 bg-[#F8F9FA]">
+<button class="px-2.5 py-1 text-body-sm font-body-sm text-on-surface-variant hover:text-primary hover:bg-white rounded transition-colors flex items-center">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+            Anterior
+          </button>
+<button class="px-3 py-1 text-body-sm font-semibold bg-white text-primary rounded shadow-xs border border-[#DEE2E6]">
+            Hoje, 24 de Outubro
+          </button>
+<button class="px-2.5 py-1 text-body-sm font-body-sm text-on-surface-variant hover:text-primary hover:bg-white rounded transition-colors flex items-center">
+            Próximo
+            <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-1 hidden sm:block"></div>
+<!-- Shift Filters -->
+<div class="flex items-center gap-1">
+<span class="text-label-sm font-label-sm text-outline uppercase mr-1">Turno:</span>
+<button class="px-2.5 py-1 rounded-lg text-label-md font-semibold bg-primary text-white">Todos os horários</button>
+<button class="px-2.5 py-1 rounded-lg text-label-md font-medium text-on-surface-variant hover:bg-[#F8F9FA] border border-transparent hover:border-[#DEE2E6]">Manhã</button>
+<button class="px-2.5 py-1 rounded-lg text-label-md font-medium text-on-surface-variant hover:bg-[#F8F9FA] border border-transparent hover:border-[#DEE2E6]">Tarde</button>
+</div>
+</div>
+<!-- Live Operational Counters -->
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F8F9FA] border border-[#DEE2E6]">
+<span class="material-symbols-outlined text-[18px] text-primary">directions_boat</span>
+<div class="text-left">
+<span class="block text-[10px] uppercase font-semibold text-outline leading-3">Saídas Hoje</span>
+<span class="text-numeric-data font-numeric-data text-on-surface">5 programadas</span>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F8F9FA] border border-[#DEE2E6]">
+<span class="material-symbols-outlined text-[18px] text-secondary">group</span>
+<div class="text-left">
+<span class="block text-[10px] uppercase font-semibold text-outline leading-3">Lotação Total</span>
+<span class="text-numeric-data font-numeric-data text-on-surface">84 / 108 vagas (77%)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800">
+<span class="material-symbols-outlined text-[18px] text-amber-600">warning</span>
+<div class="text-left">
+<span class="block text-[10px] uppercase font-semibold text-amber-700 leading-3">Atenção</span>
+<span class="text-numeric-data font-numeric-data text-amber-900">1 pendência crítica</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Grid of Daily Departures -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+<!-- CARD 1: Maragogi (DESTAQUE OBRIGATÓRIO) -->
+<article class="bg-surface-container-lowest border-2 border-amber-300 rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative ring-1 ring-amber-300/40">
+<!-- Floating Highlight Badge -->
+<div class="absolute -top-3 right-4 px-2 py-0.5 rounded bg-amber-500 text-white text-[10px] font-bold tracking-wider uppercase shadow-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">priority_high</span> Atenção Prioritária
+        </div>
+<div>
+<!-- Header Card -->
+<div class="flex justify-between items-start gap-2 mb-2">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface leading-tight">Maragogi</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Bate-volta Alagoas / Galés</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-md font-semibold bg-surface-container-low text-primary border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 06:45 - Manhã
+            </span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline mb-4">
+<span class="material-symbols-outlined text-[16px]">airport_shuttle</span>
+<span>Van Executiva / Catamarã Exclusivo</span>
+</div>
+<!-- Capacity Bar (90% Warning) -->
+<div class="mb-3">
+<div class="flex justify-between items-center text-body-sm mb-1.5">
+<span class="font-medium text-on-surface flex items-center gap-1">
+                Lotação: <strong>18 / 20 vagas</strong>
+</span>
+<span class="font-bold text-amber-700 text-label-md">90%</span>
+</div>
+<!-- Bootstrap-style Progress Bar -->
+<div class="w-full bg-[#E9ECEF] rounded-full h-2.5 overflow-hidden">
+<div class="bg-amber-500 h-2.5 rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+<!-- Remaining Slots Callout -->
+<div class="mb-4 flex items-center justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
+<span class="text-body-sm font-bold text-amber-900 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-amber-600">report_problem</span>
+              Restam apenas 2 vagas
+            </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+              Quase Lotado
+            </span>
+</div>
+<!-- Critical Conflict Box -->
+<div class="mb-4 p-2.5 rounded-lg bg-rose-50 border border-rose-300 text-rose-900 text-body-sm">
+<div class="flex items-start gap-1.5 font-semibold text-rose-800 mb-1">
+<span class="material-symbols-outlined text-[18px] text-rose-600 shrink-0">warning</span>
+<span>Atenção: pendência excede as vagas!</span>
+</div>
+<p class="text-[12px] leading-4 text-rose-700">
+              Existe <strong>1 reserva pendente (3 pessoas)</strong> aguardando confirmação, excedendo as <strong>2 vagas restantes</strong>.
+            </p>
+</div>
+<!-- Breakdown Numbers -->
+<div class="space-y-1.5 text-body-sm border-t border-[#F1F5F9] pt-3 mb-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                Confirmadas:
+              </span>
+<span class="font-semibold text-on-surface">6 reservas (18 pessoas)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-amber-600">hourglass_top</span>
+                Pendentes:
+              </span>
+<span class="font-bold text-rose-700">1 reserva (3 pessoas)</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center gap-2 pt-2 border-t border-[#DEE2E6]">
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-medium transition-colors text-center flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">list_alt</span> Passageiros
+          </button>
+<button class="flex-1 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-body-sm font-semibold transition-colors text-center shadow-xs">
+            Resolver (3 pax)
+          </button>
+</div>
+</article>
+<!-- CARD 2: Praia dos Carneiros -->
+<article class="bg-surface-container-lowest border border-[#DEE2E6] rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<!-- Header Card -->
+<div class="flex justify-between items-start gap-2 mb-2">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface leading-tight">Praia dos Carneiros</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Catamarã &amp; Banho de Argila</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-md font-semibold bg-surface-container-low text-primary border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 08:30 - Manhã
+            </span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline mb-4">
+<span class="material-symbols-outlined text-[16px]">directions_boat</span>
+<span>Catamarã Estrela de Carneiros</span>
+</div>
+<!-- Capacity Bar (93% Warning) -->
+<div class="mb-3">
+<div class="flex justify-between items-center text-body-sm mb-1.5">
+<span class="font-medium text-on-surface flex items-center gap-1">
+                Lotação: <strong>28 / 30 vagas</strong>
+</span>
+<span class="font-bold text-amber-700 text-label-md">93%</span>
+</div>
+<div class="w-full bg-[#E9ECEF] rounded-full h-2.5 overflow-hidden">
+<div class="bg-amber-500 h-2.5 rounded-full" style="width: 93%;"></div>
+</div>
+</div>
+<!-- Remaining Slots Callout -->
+<div class="mb-4 flex items-center justify-between p-2 rounded-lg bg-amber-50 border border-amber-200">
+<span class="text-body-sm font-bold text-amber-900 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-amber-600">info</span>
+              Restam apenas 2 vagas
+            </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+              Quase Lotado
+            </span>
+</div>
+<!-- Breakdown Numbers -->
+<div class="space-y-1.5 text-body-sm border-t border-[#F1F5F9] pt-3 mb-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                Confirmadas:
+              </span>
+<span class="font-semibold text-on-surface">8 reservas (28 pessoas)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-outline">check</span>
+                Pendentes:
+              </span>
+<span class="font-medium text-outline">0 pendências</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center gap-2 pt-2 border-t border-[#DEE2E6]">
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-medium transition-colors text-center flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">list_alt</span> Passageiros
+          </button>
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-semibold transition-colors text-center">
+            Gerenciar
+          </button>
+</div>
+</article>
+<!-- CARD 3: Buggy pelas praias (100% LOTADO) -->
+<article class="bg-surface-container-lowest border border-[#DEE2E6] rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<!-- Header Card -->
+<div class="flex justify-between items-start gap-2 mb-2">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface leading-tight">Buggy Ponta a Ponta</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Muro Alto ao Pontal de Maracaípe</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-md font-semibold bg-surface-container-low text-primary border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 09:00 - Manhã
+            </span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline mb-4">
+<span class="material-symbols-outlined text-[16px]">directions_car</span>
+<span>Comboio de 4 Buggies Credenciados</span>
+</div>
+<!-- Capacity Bar (100% Danger) -->
+<div class="mb-3">
+<div class="flex justify-between items-center text-body-sm mb-1.5">
+<span class="font-medium text-on-surface flex items-center gap-1">
+                Lotação: <strong>16 / 16 vagas</strong>
+</span>
+<span class="font-bold text-rose-700 text-label-md">100%</span>
+</div>
+<div class="w-full bg-[#E9ECEF] rounded-full h-2.5 overflow-hidden">
+<div class="bg-rose-600 h-2.5 rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Remaining Slots Callout (Sold Out) -->
+<div class="mb-4 flex items-center justify-between p-2 rounded-lg bg-rose-50 border border-rose-200">
+<span class="text-body-sm font-bold text-rose-900 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-rose-600">block</span>
+              0 vagas restantes (Esgotado)
+            </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-600 text-white">
+              LOTADO
+            </span>
+</div>
+<!-- Breakdown Numbers -->
+<div class="space-y-1.5 text-body-sm border-t border-[#F1F5F9] pt-3 mb-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                Confirmadas:
+              </span>
+<span class="font-semibold text-on-surface">4 buggies (16 pessoas)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-outline">check</span>
+                Pendentes:
+              </span>
+<span class="font-medium text-outline">0 pendências</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center gap-2 pt-2 border-t border-[#DEE2E6]">
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-medium transition-colors text-center flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">list_alt</span> Passageiros
+          </button>
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-semibold transition-colors text-center">
+            Gerenciar
+          </button>
+</div>
+</article>
+<!-- CARD 4: Piscinas Naturais (58% Verde) -->
+<article class="bg-surface-container-lowest border border-[#DEE2E6] rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<!-- Header Card -->
+<div class="flex justify-between items-start gap-2 mb-2">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface leading-tight">Piscinas Naturais</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Jangada tradicional / Maré 0.2m</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-md font-semibold bg-surface-container-low text-primary border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 10:15 - Manhã
+            </span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline mb-4">
+<span class="material-symbols-outlined text-[16px]">kayaking</span>
+<span>Associação dos Jangadeiros (Praça das Piscinas)</span>
+</div>
+<!-- Capacity Bar (58% Safe Success) -->
+<div class="mb-3">
+<div class="flex justify-between items-center text-body-sm mb-1.5">
+<span class="font-medium text-on-surface flex items-center gap-1">
+                Lotação: <strong>14 / 24 vagas</strong>
+</span>
+<span class="font-bold text-emerald-700 text-label-md">58%</span>
+</div>
+<div class="w-full bg-[#E9ECEF] rounded-full h-2.5 overflow-hidden">
+<div class="bg-emerald-600 h-2.5 rounded-full" style="width: 58%;"></div>
+</div>
+</div>
+<!-- Remaining Slots Callout -->
+<div class="mb-4 flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+<span class="text-body-sm font-bold text-emerald-900 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
+              Restam 10 vagas
+            </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+              Vagas Disponíveis
+            </span>
+</div>
+<!-- Breakdown Numbers -->
+<div class="space-y-1.5 text-body-sm border-t border-[#F1F5F9] pt-3 mb-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                Confirmadas:
+              </span>
+<span class="font-semibold text-on-surface">4 reservas (14 pessoas)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-amber-600">hourglass_top</span>
+                Pendentes:
+              </span>
+<span class="font-semibold text-amber-700">2 reservas (5 pessoas)</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center gap-2 pt-2 border-t border-[#DEE2E6]">
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-medium transition-colors text-center flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">list_alt</span> Passageiros
+          </button>
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-primary border border-[#DEE2E6] hover:border-primary rounded-lg text-body-sm font-semibold transition-colors text-center">
+            Aprovar (5 pax)
+          </button>
+</div>
+</article>
+<!-- CARD 5: Maracaípe ao pôr do sol (44% Verde) -->
+<article class="bg-surface-container-lowest border border-[#DEE2E6] rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<!-- Header Card -->
+<div class="flex justify-between items-start gap-2 mb-2">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface leading-tight">Maracaípe Pôr do Sol</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Cavalos &amp; Cavalos-marinhos no Mangue</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-md font-semibold bg-surface-container-low text-primary border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 16:00 - Tarde
+            </span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline mb-4">
+<span class="material-symbols-outlined text-[16px]">wb_twilight</span>
+<span>Pontal de Maracaípe (Estacionamento Sul)</span>
+</div>
+<!-- Capacity Bar (44% Safe Success) -->
+<div class="mb-3">
+<div class="flex justify-between items-center text-body-sm mb-1.5">
+<span class="font-medium text-on-surface flex items-center gap-1">
+                Lotação: <strong>8 / 18 vagas</strong>
+</span>
+<span class="font-bold text-emerald-700 text-label-md">44%</span>
+</div>
+<div class="w-full bg-[#E9ECEF] rounded-full h-2.5 overflow-hidden">
+<div class="bg-emerald-600 h-2.5 rounded-full" style="width: 44%;"></div>
+</div>
+</div>
+<!-- Remaining Slots Callout -->
+<div class="mb-4 flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+<span class="text-body-sm font-bold text-emerald-900 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
+              Restam 10 vagas disponíveis
+            </span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+              Vagas Abertas
+            </span>
+</div>
+<!-- Breakdown Numbers -->
+<div class="space-y-1.5 text-body-sm border-t border-[#F1F5F9] pt-3 mb-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                Confirmadas:
+              </span>
+<span class="font-semibold text-on-surface">3 reservas (8 pessoas)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-outline">check</span>
+                Pendentes:
+              </span>
+<span class="font-medium text-outline">0 pendências</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center gap-2 pt-2 border-t border-[#DEE2E6]">
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-medium transition-colors text-center flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">list_alt</span> Passageiros
+          </button>
+<button class="flex-1 px-3 py-1.5 bg-white hover:bg-[#F8F9FA] text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-semibold transition-colors text-center">
+            Gerenciar
+          </button>
+</div>
+</article>
+<!-- Quick Action / Operational Summary Card -->
+<article class="bg-surface-container-low border border-dashed border-outline-variant rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[22px]">waves</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Boletim Marítimo &amp; Marés</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+            Informações astronômicas da Capitania dos Portos para Porto de Galinhas:
+          </p>
+<div class="space-y-2 mb-4">
+<div class="flex justify-between items-center p-2 rounded bg-white border border-[#DEE2E6] text-body-sm">
+<span class="text-on-surface-variant font-medium">Baixa-mar:</span>
+<span class="font-bold text-primary">10:42 — 0.2m (Excelente)</span>
+</div>
+<div class="flex justify-between items-center p-2 rounded bg-white border border-[#DEE2E6] text-body-sm">
+<span class="text-on-surface-variant font-medium">Preamar:</span>
+<span class="font-semibold text-on-surface">17:05 — 2.1m</span>
+</div>
+<div class="flex justify-between items-center p-2 rounded bg-white border border-[#DEE2E6] text-body-sm">
+<span class="text-on-surface-variant font-medium">Condição do Mar:</span>
+<span class="font-semibold text-emerald-700">Calmo / Vento 9 nós</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-2 bg-white hover:bg-slate-50 text-[#334155] border border-[#DEE2E6] hover:border-[#CBD5E1] rounded-lg text-body-sm font-medium transition-colors flex items-center justify-center gap-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+            Exportar Resumo do Dia (PDF/XLS)
+          </button>
+</div>
+</article>
+</div>
+</main>
+<!-- Clean Sub-Footer Status -->
+<footer class="bg-white border-t border-[#DEE2E6] py-3 text-center text-label-md font-label-md text-outline">
+<div class="max-w-[1440px] mx-auto px-space-xl flex flex-col sm:flex-row justify-between items-center gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>RESERVOW v2.4 • Base Central Porto de Galinhas (PE) • Sincronizado às 10:12</span>
+</div>
+<div>
+<span>Suporte Operacional: Rádio VHF Canal 16 / Ramal 401</span>
+</div>
+</div>
+</footer>
+</body></html>
