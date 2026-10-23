@@ -1,0 +1,12 @@
+/vendor
+/.env
+/database/database.sqlite
+/.phpunit.result.cache
+/storage/*.key
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/bootstrap/cache/*.php
